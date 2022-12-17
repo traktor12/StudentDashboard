@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { allStudentData } from "../../data/studentData";
 import {  
   BarChart,
@@ -11,10 +11,16 @@ import {
 } from "recharts";
 
 function AllStudents (){
+  const [showFunBar, setShowFunBar] = useState(true);
+  const [showDifficultyBar, setShowDifficultyBar] = useState(true);
 
 
   return(
     <div>
+       <input type="checkbox" checked={showFunBar} onChange={() => setShowFunBar(!showFunBar)} />
+      Show Fun Bar
+      <input type="checkbox" checked={showDifficultyBar} onChange={() => setShowDifficultyBar(!showDifficultyBar)} />
+      Show Difficulty Bar
       <BarChart
       width={20000}
       height={300}
@@ -31,8 +37,8 @@ function AllStudents (){
       <YAxis type="number" domain={[0, 10]} />
       <Tooltip />
       <Legend />
-      <Bar dataKey="funGrade" fill="blue" />
-      <Bar dataKey="difficultyGrade" fill="red" />
+      {showFunBar && <Bar id='funBar' dataKey="funGrade" fill="blue" />}
+      {showDifficultyBar && <Bar dataKey="difficultyGrade" fill="red" />}
     </BarChart>
     </div>
   )

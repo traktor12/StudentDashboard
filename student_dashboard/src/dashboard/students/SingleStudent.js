@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { allStudentData } from "../../data/studentData";
 import {  
     BarChart,
@@ -14,24 +14,22 @@ import {
 function SingleStudent() {
     const [picked, setPicked]=useState();
     const singleStudent = allStudentData.filter(x=> x.studentName.includes(picked));
-    
-    const unique = [...new Set(allStudentData.map(item => item.studentName))]; // [ 'A', 'B']
+    const [showFunBar, setShowFunBar] = useState(true);
+    const [showDifficultyBar, setShowDifficultyBar] = useState(true);
+
+
+    const unique = [...new Set(allStudentData.map(item => item.studentName))]; 
     console.log(unique)
-  
-    // const sss=
-    // <select id='sel' value={picked} onChange={x=>setPicked(x.target.value)}>
-    //             <option disabled selected>Select a student</option>
-    // </select>
-  
-    
-    //  function Addsss(){
-    //   useEffect(()=>
-    //         unique.forEach(x=>{
-    //             document.getElementById('sel').innerHTML += '<option value="' + x + '">' + x + "<option/>"    
-    //         })  );
-    //   }
+
+    const handleChange = (event) => {
+      const newValue = event.target.value;
+      window.history.pushState({}, '', `/${newValue}`);  // Update the URL path 
+      //window.location.assign() to reloadd the page as well.
+      setPicked(newValue);  // Update the component state
+    }
+
     const sss = (
-      <select id='sel' value={picked} onChange={x => setPicked(x.target.value)}>
+      <select id='sel' value={picked} onChange={handleChange}>
         <option disabled selected>Select a student</option>
         {unique.map(name => (
           <option key={name} value={name}>
@@ -45,7 +43,11 @@ function SingleStudent() {
     <div>
         {sss}
     <div>Name: {picked}</div>
-      <BarChart
+    <input type="checkbox" checked={showFunBar} onChange={() => setShowFunBar(!showFunBar)} />
+      Show Fun Bar
+      <input type="checkbox" checked={showDifficultyBar} onChange={() => setShowDifficultyBar(!showDifficultyBar)} />
+      Show Difficulty Bar
+    <BarChart
         width={2000}
         height={300}
         data={singleStudent}
@@ -61,10 +63,28 @@ function SingleStudent() {
         <YAxis type="number" domain={[0, 10]} />
         <Tooltip />
         <Legend />
-        <Bar dataKey="funGrade" fill="blue" />
-        <Bar dataKey="difficultyGrade" fill="red" />
+        {showFunBar && <Bar id='funBar' dataKey="funGrade" fill="blue" />}
+        {showDifficultyBar && <Bar dataKey="difficultyGrade" fill="red" />}
       </BarChart>
-     
+      {/* <BarChart
+        width={2000}
+        height={300}
+        data={singleStudent}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="projectName" tick={{fontSize: 10, fill:'red'}}/>
+        <YAxis type="number" domain={[0, 10]} />
+        <Tooltip />
+        <Legend />
+        <Bar id='funBar' dataKey="funGrade" fill="blue" />
+        <Bar dataKey="difficultyGrade" fill="red" />
+      </BarChart> */}
     </div>
     
   );
