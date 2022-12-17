@@ -1,0 +1,24 @@
+.nav {
+  color: rgb(255, 63, 33);
+  background-color: bisque;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1.5rem;
+}
+.nav .siteTitle {
+  font-size: 3rem;
+}
+.nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+.nav a {
+  list-style: none;
+  text-decoration: none;
+}
+.nav a:visited {
+  color: inherit;
+}/*# sourceMappingURL=style.css.map */

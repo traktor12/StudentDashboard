@@ -1,0 +1,29 @@
+//Variables ------------------------------------------
+$color1: rgb(255, 63, 33);
+//NavBar ----------------------------------------------------------------
+.nav {
+    color: $color1;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1.5rem;
+  
+    .siteTitle {
+      font-size: 3rem;
+    }
+  
+    ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+    a {
+      list-style: none;
+      text-decoration: none;
+      &:visited {
+        color: inherit;
+      }
+    }
+  }
