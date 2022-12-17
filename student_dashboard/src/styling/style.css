@@ -21,4 +21,24 @@
 }
 .nav a:visited {
   color: inherit;
+}
+
+input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+
+.dBarCheckbox {
+  accent-color: red;
+}
+
+#sel {
+  background-color: rgb(173, 228, 230);
+  color: black;
+  font-size: 16px;
+  border: none;
+}
+#sel:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

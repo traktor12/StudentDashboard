@@ -27,3 +27,23 @@ $color1: rgb(255, 63, 33);
       }
     }
   }
+
+//Bar checkboxes -------------------------------------------------
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+.dBarCheckbox{
+  accent-color: red;
+}
+//Select styling -------------------------------------------------
+#sel {
+  background-color: rgb(173, 228, 230);
+  color: black;
+  font-size: 16px;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}

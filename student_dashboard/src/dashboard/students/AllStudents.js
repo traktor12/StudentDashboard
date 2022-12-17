@@ -16,13 +16,20 @@ function AllStudents (){
   const [showFunBar, setShowFunBar] = useState(true);
   const [showDifficultyBar, setShowDifficultyBar] = useState(true);
 
+//The Checboxes for choosing which bars are displayed -------------------------------------------------
+  const checkboxInputs = (
+    <div>
+      <input className="funBarCheckbox" type="checkbox" checked={showFunBar} onChange={() => setShowFunBar(!showFunBar)} />
+      Show Fun Bar
+      <br/>
+      <input className="dBarCheckbox" type="checkbox" checked={showDifficultyBar} onChange={() => setShowDifficultyBar(!showDifficultyBar)} />
+      Show Difficulty Bar
+    </div>
+  );  
 //Return Statement -------------------------------------------------------------------------------
   return(
     <div>
-       <input className="funBarCheckbox" type="checkbox" checked={showFunBar} onChange={() => setShowFunBar(!showFunBar)} />
-      Show Fun Bar
-      <input className="dBarCheckbox" type="checkbox" checked={showDifficultyBar} onChange={() => setShowDifficultyBar(!showDifficultyBar)} />
-      Show Difficulty Bar
+      {checkboxInputs}
       {/* BarChart Code */}
       <BarChart
       width={20000}
