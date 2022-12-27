@@ -44,6 +44,8 @@ function AllStudents (){
     >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="projectName" tick={{fontSize: 10, fill:'red'}}/>
+      {/* <XAxis dataKey="projectName" minTickGap={0.1} tick={{fontSize: 10, fill:'red'}}/> */} 
+      {/* Laat meer projectNamen onder de X axis zien maar dichter bij elkaar. */}
       <YAxis type="number" domain={[0, 10]} />
       <Tooltip />
       <Legend />

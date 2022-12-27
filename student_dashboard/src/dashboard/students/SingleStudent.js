@@ -25,7 +25,7 @@ function SingleStudent() {
 
 //Creating a new array[] from allStudentData[] with only the unique names as values-------------------
     const unique = [...new Set(allStudentData.map(item => item.studentName))]; 
-    console.log(unique)
+//    console.log(unique)
 
 //Code to update the URL path to the selected student name--------------------------------------------
 
@@ -33,8 +33,7 @@ function SingleStudent() {
     const handleChange = (event) => {
       const newValue = event.target.value;
       setPicked(newValue);  // Update the component state
-    // window.location.assign({}, '', `/SingleStudent/${newValue}`);  // Reload + URL Update 
-     window.history.pushState({}, '', `/SingleStudent/${newValue}`); //no reload + URL Update
+      window.history.pushState({}, '', `/SingleStudent/${newValue}`); //no reload + URL Update
     }
 
     window.onload = () => {setPicked(defaultSelectedOption)}
@@ -44,11 +43,11 @@ function SingleStudent() {
 
 const pathnameParts = window.location.pathname.split('/');
 const defaultSelectedOption = pathnameParts[pathnameParts.length - 1];
-console.log(defaultSelectedOption)
+//console.log(defaultSelectedOption)
 
 const sss = (
   <select id='sel' value={picked} onChange={handleChange}>
-    <option disabled defaultValue={defaultSelectedOption} value={defaultSelectedOption}>{defaultSelectedOption}</option>
+    <option selected disabled defaultValue={defaultSelectedOption} value={defaultSelectedOption}>{defaultSelectedOption}</option>
     {unique.map(name => (
       <option key={name} value={name}>
         {name}

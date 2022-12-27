@@ -1,4 +1,3 @@
-//import {Link} from 'react-router-dom';
 import AllStudents from "./students/AllStudents";
 import SingleStudent from "./students/SingleStudent";
 import {BrowserRouter, Routes, Route,Link} from 'react-router-dom';
