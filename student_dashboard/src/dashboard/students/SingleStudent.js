@@ -27,7 +27,8 @@ function SingleStudent() {
 //Code to update the URL path to the selected student name--------------------------------------------
     const handleChange = (event) => {
       const newValue = event.target.value;
-      window.history.pushState({}, '', `/${newValue}`);  // Update the URL path 
+     // window.location.assign({}, '', `/${newValue}`);  // Update the URL path 
+      window.history.pushState({}, '', `/${newValue}`); //no reload
       //window.location.assign() to reloadd the page as well.
       setPicked(newValue);  // Update the component state
     }
