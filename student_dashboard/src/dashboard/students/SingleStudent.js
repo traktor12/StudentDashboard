@@ -9,10 +9,13 @@ import {
     Tooltip,
     Legend
   } from "recharts";
+  
 
 function SingleStudent() {
+  
 
 //State and const for getting the value of the selected student <option> in <select> ----------------
+   
     const [picked, setPicked]=useState();
     const singleStudent = allStudentData.filter(x=> x.studentName.includes(picked));
     
@@ -25,25 +28,36 @@ function SingleStudent() {
     console.log(unique)
 
 //Code to update the URL path to the selected student name--------------------------------------------
+
+ 
     const handleChange = (event) => {
       const newValue = event.target.value;
-     // window.location.assign({}, '', `/${newValue}`);  // Update the URL path 
-      window.history.pushState({}, '', `/${newValue}`); //no reload
-      //window.location.assign() to reloadd the page as well.
       setPicked(newValue);  // Update the component state
+    // window.location.assign({}, '', `/SingleStudent/${newValue}`);  // Reload + URL Update 
+     window.history.pushState({}, '', `/SingleStudent/${newValue}`); //no reload + URL Update
     }
 
+    window.onload = () => {setPicked(defaultSelectedOption)}
+   
+
 //A Select where the options are the values of the unique[] array -----------------------------------
-    const sss = (
-      <select id='sel' value={picked} onChange={handleChange}>
-        <option disabled selected>Select a student</option>
-        {unique.map(name => (
-          <option key={name} value={name}>
-            {name}
-          </option>
-        ))}
-      </select>
-    );
+
+const pathnameParts = window.location.pathname.split('/');
+const defaultSelectedOption = pathnameParts[pathnameParts.length - 1];
+console.log(defaultSelectedOption)
+
+const sss = (
+  <select id='sel' value={picked} onChange={handleChange}>
+    <option disabled defaultValue={defaultSelectedOption} value={defaultSelectedOption}>{defaultSelectedOption}</option>
+    {unique.map(name => (
+      <option key={name} value={name}>
+        {name}
+      </option>
+    ))}
+  </select>
+);
+
+
 
 //The Checboxes for choosing which bars are displayed -------------------------------------------------
   const checkboxInputs = (

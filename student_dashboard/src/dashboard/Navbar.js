@@ -20,6 +20,7 @@ export default function Navbar(){
         <Routes>
           <Route path="/" element={<AllStudents />} /> 
           <Route path="SingleStudent" element={<SingleStudent />} />
+          <Route path="/SingleStudent/:studentName" element={<SingleStudent />}/>
         </Routes>
         </BrowserRouter>
     )
